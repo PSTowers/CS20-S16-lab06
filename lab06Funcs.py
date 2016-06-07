@@ -63,20 +63,103 @@ def whatMajor(fName, listOfStudents):
     'HISTORY'
     >>> 
     """
-    listOfMajors = ""
+
     for i in range(len(listOfStudents)):
 
        # step through every item in listOfStudents
        # when you find a match, return that students's major
 
        if listOfStudents[i].fName == fName:
-          listOfMajors += listOfStudents[i].major
-       listOfMajors.split()
+          return listOfStudents[i].major
 
     # if you got all the way through the loop and didn't find
     #  the name, return False
-    if listOfMajors == "":
-       return False
-    else:
-       return listOfMajors
+
+    return False
+
        
+def whatLName(fName, listOfStudents):
+    """
+    return the last name of the first student in listOfStudents with with first name fName, False if none found
+    >>> whatLName("FRED", [Student("MARY","KAY","MATH"), Student("FRED","CRUZ","HISTORY"), Student("CHRIS","GAUCHO","UNDEC")])
+    'CRUZ'
+    >>>
+    """
+
+    for i in range(len(listOfStudents)):
+
+       if listOfStudents[i].fName == fName:
+          return listOfStudents[i].lName
+
+    return False
+
+
+def countUndec(listOfStudents):
+    """
+    return the number of students with the major "UNDEC" in listOfStudents, 0 if none found
+    >>> countUndec([Student("MARY","KAY","MATH"), Student("FRED","CRUZ","HISTORY"), Student("CHRIS","GAUCHO","UNDEC")])
+    '1'
+    >>>
+    """
+
+    count = 0
+    for i in range(len(listOfStudents)):
+       
+       if listOfStudents[i].major == "UNDEC":
+          count += 1
+
+    return count
+
+
+def lNamesOfUndec(listOfStudents):
+    """
+    return a list containing the last name of students with the major "UNDEC" in listOfStudents, [] if none found
+    >>> lNamesOfUndec([Student("MARY","KAY","MATH"), Student("FRED","CRUZ","HISTORY"), Student("CHRIS","GAUCHO","UNDEC")])
+    ["GAUCHO"]
+    >>>
+    """
+
+    answerList = []
+    for i in range(len(listOfStudents)):
+       
+       if listOfStudents[i].major == "UNDEC":
+          answerList += [listOfStudents[i].lName]
+
+    return answerList
+
+def majorToLNames(thisMajor, listOfStudents):
+
+    """
+    return a list containing the last name of students with th specified major in listOfStudents, [] if none found
+    >>> majorToLNames("MATH", [Student("MARY","KAY","MATH"), Student("FRED","CRUZ","HISTORY"), Student("CHRIS","GAUCHO","UNDEC")])
+    ["KAY"]
+    >>>
+    """
+
+    answerList = []
+
+    for i in range(len(listOfStudents)):
+
+        if listOfStudents[i].major == thisMajor:
+           answerList += [listOfStudents[i].lName]
+
+    return answerList
+
+
+def allStudentsMajoringIn(thisMajor, listOfStudents):
+
+    """
+    return a list containing the named tuple of students with the specified major in listOfStudents, [] if none found
+    >>> allStudentsMajoringIn("HISTORY", [Student("MARY","KAY","MATH"), Student("FRED","CRUZ","HISTORY"), Student("CHRIS","GAUCHO","UNDEC")])
+    [Student(fName='FRED', lName='CRUZ', major='HISTORY')]
+    >>>
+    """
+    
+    answerList = []
+
+    for i in range(len(listOfStudents)):
+
+        if listOfStudents[i].major == thisMajor:
+           answerList += [listOfStudents[i]]
+
+    return answerList
